@@ -3,6 +3,8 @@
 #include "memory.h"
 #include "value.h"
 
+void printValue(Value value) { printf("%g", value); }
+
 void initValueArray(ValueArray *array) {
   array->values = NULL;
   array->capacity = 0;

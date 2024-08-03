@@ -5,6 +5,8 @@
 
 typedef double Value; // the 'Value' type is internally a 'double' in C world
 
+void printValue(Value value);
+
 // Stores all values (i.e. constants and literals) needed throughout the code
 typedef struct {
   int capacity;

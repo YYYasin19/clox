@@ -9,6 +9,7 @@
 
 // defines the type 'enum { ...}' as 'OpCode'
 typedef enum {
+  OP_CONSTANT,
   OP_RETURN,
 } OpCode;
 
