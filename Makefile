@@ -2,12 +2,14 @@ CC = gcc
 CFLAGS = -Wall -Wextra -std=c99 -I./src
 SRCDIR = src
 OBJDIR = obj
+TARGETDIR = build
 
 SOURCES = $(wildcard $(SRCDIR)/*.c)
 OBJECTS = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SOURCES))
 TARGET = clox
+TARGET_PATH = $(TARGETDIR)/$(TARGET)
 
-$(TARGET): $(OBJECTS)
+$(TARGET_PATH): $(OBJECTS) | $(TARGETDIR)
 	$(CC) $(CFLAGS) -o $@ $^
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
@@ -16,7 +18,10 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 $(OBJDIR):
 	mkdir -p $@
 
+$(TARGETDIR):
+	mkdir -p $@
+
 clean:
-	rm -rf $(OBJDIR) $(TARGET)
+	rm -rf $(OBJDIR) $(TARGETDIR)
 
 .PHONY: clean
