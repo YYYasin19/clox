@@ -5,6 +5,7 @@
 #define clox_chunk_h
 
 #include "common.h"
+#include "value.h"
 
 // defines the type 'enum { ...}' as 'OpCode'
 typedef enum {
@@ -16,6 +17,7 @@ typedef struct {
   int count;
   int capacity;
   uint8_t *code;
+  ValueArray constants;
 } Chunk;
 
 // initialize a chunk
@@ -26,5 +28,7 @@ void writeChunk(Chunk *chunk, uint8_t byte);
 
 // free a chunk
 void freeChunk(Chunk *chunk);
+
+int addConstant(Chunk *chunk, Value value);
 
 #endif
