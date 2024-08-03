@@ -1,0 +1,30 @@
+/*
+ *  A chunk is a series of byte-code
+ */
+#ifndef clox_chunk_h
+#define clox_chunk_h
+
+#include "common.h"
+
+// defines the type 'enum { ...}' as 'OpCode'
+typedef enum {
+  OP_RETURN,
+} OpCode;
+
+// A chunk is a (dynamic) array of bytes
+typedef struct {
+  int count;
+  int capacity;
+  uint8_t *code;
+} Chunk;
+
+// initialize a chunk
+void initChunk(Chunk *chunk);
+
+// add bytes to chunk
+void writeChunk(Chunk *chunk, uint8_t byte);
+
+// free a chunk
+void freeChunk(Chunk *chunk);
+
+#endif
