@@ -9,6 +9,13 @@ OBJECTS = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SOURCES))
 TARGET = clox
 TARGET_PATH = $(TARGETDIR)/$(TARGET)
 
+# Default build
+all: $(TARGET_PATH)
+
+# Debug build
+debug: CFLAGS += -g
+debug: clean $(TARGET_PATH)
+
 $(TARGET_PATH): $(OBJECTS) | $(TARGETDIR)
 	$(CC) $(CFLAGS) -o $@ $^
 
@@ -24,4 +31,4 @@ $(TARGETDIR):
 clean:
 	rm -rf $(OBJDIR) $(TARGETDIR)
 
-.PHONY: clean
+.PHONY: all debug clean
