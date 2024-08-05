@@ -7,11 +7,11 @@ int main() {
   initChunk(&chunk);
 
   // write a constant to the value array
-  int constantIndex = addConstant(&chunk, 1.2);
-  writeChunk(&chunk, OP_CONSTANT);
-  writeChunk(&chunk, constantIndex); // add opcode & constant to 'stack'
+  int constIndex = addConstant(&chunk, 1.2);
+  writeChunk(&chunk, OP_CONSTANT, 19);
+  writeChunk(&chunk, constIndex, 19);
 
-  writeChunk(&chunk, OP_RETURN);
+  writeChunk(&chunk, OP_RETURN, 19);
   disassembleChunk(&chunk, "test chunk");
   freeChunk(&chunk);
   return 0;

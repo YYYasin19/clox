@@ -21,7 +21,7 @@ static int simpleInstruction(const char *name, int offset) {
 static int constantInstruction(const char *name, Chunk *chunk, int offset) {
   uint8_t constantOffset =
       chunk->code[offset + 1]; // retrieve from code the offset
-  printf("%-16s %4d '", name, constantOffset);
+  printf("%-16s %6d '", name, constantOffset);
   Value constantValue = chunk->constants.values[constantOffset];
   printValue(constantValue);
   printf("'\n");
@@ -31,7 +31,14 @@ static int constantInstruction(const char *name, Chunk *chunk, int offset) {
 // For the instruction at 'offset':
 // print a readable repr and return next offset.
 int disassembleInstruction(Chunk *chunk, int offset) {
-  printf("%04d ", offset);
+  printf("%06d ", offset);
+
+  // print the lines (in source) where this chunk came from
+  if ((offset > 0) && (chunk->lines[offset] == chunk->lines[offset - 1])) {
+    printf("     . "); // from the same line
+  } else {
+    printf("%6d ", chunk->lines[offset]); // from seperate lines
+  }
 
   uint8_t instr = chunk->code[offset];
   switch (instr) {

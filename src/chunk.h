@@ -18,6 +18,7 @@ typedef struct {
   int count;
   int capacity;
   uint8_t *code;
+  int *lines; // LOC that this chunk was generated from
   ValueArray constants;
 } Chunk;
 
@@ -25,7 +26,7 @@ typedef struct {
 void initChunk(Chunk *chunk);
 
 // add bytes to chunk
-void writeChunk(Chunk *chunk, uint8_t byte);
+void writeChunk(Chunk *chunk, uint8_t byte, int line);
 
 // free a chunk
 void freeChunk(Chunk *chunk);
