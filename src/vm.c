@@ -10,7 +10,7 @@ void initVM() {}
 void freeVM() {}
 
 // reads the instruction at the current 'ip' and increments the 'ip'
-static uint8_t read_byte() { return (*vm.ip)++; }
+static uint8_t read_byte() { return (*vm.ip++); }
 
 // read the next constant
 static Value read_constant() {
