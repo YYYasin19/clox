@@ -13,9 +13,11 @@ int main() {
   int constIndex = addConstant(&chunk, 1.2);
   writeChunk(&chunk, OP_CONSTANT, 19);
   writeChunk(&chunk, constIndex, 19);
+  // writeChunk(&chunk, OP_CONSTANT, 19);
+  // writeChunk(&chunk, addConstant(&chunk, 5346), 19);
 
   writeChunk(&chunk, OP_RETURN, 19);
-  disassembleChunk(&chunk, "test chunk");
+  // disassembleChunk(&chunk, "test chunk");
 
   // run the interpreter
   interpret(&chunk);

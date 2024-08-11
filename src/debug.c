@@ -49,3 +49,13 @@ int disassembleInstruction(Chunk *chunk, int offset) {
     return offset + 1;
   }
 }
+
+void printStack(Value *stack, Value *stackTop) {
+  printf("          ");
+  for (Value *slot = stack; slot < stackTop; slot++) {
+    printf("[ ");
+    printValue(*slot);
+    printf(" ]");
+  }
+  printf("\n");
+}

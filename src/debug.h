@@ -9,4 +9,6 @@ void disassembleChunk(Chunk *chunk, const char *name);
 print a readable repr and return next offset. */
 int disassembleInstruction(Chunk *chunk, int offset);
 
+void printStack(Value *stack, Value *stackTop);
+
 #endif
