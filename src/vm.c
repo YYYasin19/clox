@@ -1,7 +1,7 @@
-#include <stdio.h>
-
-#include "common.h"
 #include "vm.h"
+#include "common.h"
+#include "debug.h"
+#include <stdio.h>
 
 VM vm; // global vm
 
@@ -21,6 +21,12 @@ static Value read_constant() {
 static InterpretResult run() {
 
   for (;;) {
+
+#ifdef DEBUG_MODE
+    int relativeOffset = (int)(vm.ip - vm.chunk->code);
+    disassembleInstruction(vm.chunk, relativeOffset);
+#endif
+
     uint8_t instr;
     switch (instr = read_byte()) {
 

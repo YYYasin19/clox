@@ -28,8 +28,6 @@ static int constantInstruction(const char *name, Chunk *chunk, int offset) {
   return offset + 2;
 }
 
-// For the instruction at 'offset':
-// print a readable repr and return next offset.
 int disassembleInstruction(Chunk *chunk, int offset) {
   printf("%06d ", offset);
 

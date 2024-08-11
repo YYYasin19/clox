@@ -4,6 +4,9 @@
 #include "chunk.h"
 
 void disassembleChunk(Chunk *chunk, const char *name);
+
+/* For the instruction at 'offset':
+print a readable repr and return next offset. */
 int disassembleInstruction(Chunk *chunk, int offset);
 
 #endif
